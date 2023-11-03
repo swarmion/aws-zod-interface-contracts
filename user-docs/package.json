@@ -1,0 +1,54 @@
+{
+  "name": "@swarmion/documentation",
+  "private": true,
+  "version": "0.1.0",
+  "license": "MIT",
+  "scripts": {
+    "build": "docusaurus build",
+    "clear": "docusaurus clear",
+    "docusaurus": "docusaurus",
+    "format-check": "prettier --check . --ignore-path ../../.prettierignore",
+    "format-fix": "prettier --write . --ignore-path ../../.prettierignore",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "pnpm lint-fix .",
+    "linter-base-config": "eslint --ext=js,ts",
+    "serve": "docusaurus serve",
+    "start": "docusaurus start",
+    "swizzle": "docusaurus swizzle",
+    "test-type": "tsc",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "write-translations": "docusaurus write-translations"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "dependencies": {
+    "@docusaurus/core": "2.4.3",
+    "@docusaurus/preset-classic": "2.4.3",
+    "@docusaurus/theme-classic": "2.4.3",
+    "@docusaurus/theme-common": "2.4.3",
+    "@mdx-js/react": "^1.6.22",
+    "clsx": "^1.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@docusaurus/eslint-plugin": "^2.4.1",
+    "@docusaurus/module-type-aliases": "2.4.3",
+    "@docusaurus/plugin-content-docs": "2.4.3",
+    "@docusaurus/types": "2.4.3",
+    "@tsconfig/docusaurus": "^1.0.6",
+    "@types/node": "^18.16.1",
+    "eslint": "^8.29.0",
+    "typescript": "^5.0.0"
+  }
+}

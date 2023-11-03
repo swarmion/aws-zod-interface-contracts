@@ -1,0 +1,16 @@
+name: 'Get Project Code Changes'
+description: 'Returns which projects have been modified'
+outputs:
+  projects:
+    description: Names of the affected projects
+    value: ${{ steps.affected-projects.outputs.projects }}
+runs:
+  using: 'composite'
+  steps:
+    - name: Derive appropriate SHAs for base and head for `nx affected` commands
+      uses: nrwl/nx-set-shas@v3
+    - name: Get affected projects
+      id: affected-projects
+      run: |
+        echo "projects=$(npx nx print-affected | jq -c ".projects")" >> $GITHUB_OUTPUT
+      shell: bash

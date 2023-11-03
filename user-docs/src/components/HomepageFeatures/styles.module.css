@@ -1,0 +1,25 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureImgWrapper {
+  height: 400px;
+  display: flex;
+}
+
+.featureImg {
+  margin: auto;
+}
+
+@media screen and (max-width: 996px) {
+  .featureImgWrapper {
+    height: 150px;
+  }
+
+  .featureImg {
+    max-width: 25%;
+  }
+}

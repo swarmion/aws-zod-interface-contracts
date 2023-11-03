@@ -1,0 +1,63 @@
+{
+  "npmScope": "aws-zod-interface-contracts",
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "nx-cloud",
+      "options": {
+        "cacheableOperations": [
+          "bootstrap",
+          "build",
+          "package",
+          "test-circular",
+          "test-linter",
+          "test-type",
+          "test-unit"
+        ],
+        "cacheDirectory": "nx-cache",
+        "accessToken": "MzY4MGJjNWEtZmE5YS00ZWQ2LTgzOTEtYzY0Y2MzOTFlMGJkfHJlYWQtd3JpdGU="
+      }
+    }
+  },
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*"],
+    "production": ["!{projectRoot}/**/*.test.tsx?"]
+  },
+  "targetDefaults": {
+    "bench": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "build": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^build", "^package"]
+    },
+    "package": {
+      "inputs": ["production", "^production"],
+      "dependsOn": ["^package"],
+      "outputs": [
+        "{projectRoot}/dist",
+        "{projectRoot}/tsconfig.build.tsbuildinfo"
+      ]
+    },
+    "test-linter": {
+      "inputs": ["default", "^production", "{workspaceRoot}/.eslintrc.js"],
+      "dependsOn": ["^package"]
+    },
+    "test-unit": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"],
+      "outputs": ["{projectRoot}/coverage"]
+    },
+    "test-type": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    },
+    "test-circular": {
+      "inputs": ["default", "^production"],
+      "dependsOn": ["^package"]
+    }
+  },
+  "affected": {
+    "defaultBase": "main"
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "search.exclude": {
+      "**/coverage": true,
+      "**/node_modules": true,
+      "**/.docusaurus": true,
+      "**/build": true,
+      "**/bundles": true,
+      "**/dist": true,
+      "**/*.tsbuildinfo": true,
+      "nx-cache/**": true,
+      "pnpm-lock.yaml": true
+    },
+    "search.followSymlinks": false,
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/**/*": true,
+      "**/coverage/**": true,
+      "**/build/**/*": true,
+      "**/bundles/**": true,
+      "**/*.tsbuildinfo": true,
+      "nx-cache/**/*": true,
+      "**/cdk.out/**/*": true
+    },
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/CVS": true,
+      "**/.DS_Store": true,
+      "**/Thumbs.db": true
+    },
+    "[dotenv][ignore][properties][shellscript]": {
+      "editor.defaultFormatter": "foxundermoon.shell-format"
+    },
+    "[html][javascript][json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
+    "[markdown][mdx]": {
+      "editor.wordWrap": "on"
+    },
+    "typescript.tsdk": "aws-zod-interface-contracts root/node_modules/typescript/lib",
+    "vitest.commandLine": "pnpm vitest",
+    "vitest.disabledWorkspaceFolders": ["aws-zod-interface-contracts root"],
+    "cSpell.words": [
+      "esbuild",
+      "tsbuildinfo",
+      "tsup",
+      "ulid"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "esbenp.prettier-vscode",
+      "dbaeumer.vscode-eslint",
+      "editorconfig.editorconfig",
+      "foxundermoon.shell-format",
+      "ZixuanChen.vitest-explorer",
+      "streetsidesoftware.code-spell-checker",
+      "streetsidesoftware.code-spell-checker-french",
+      "SebastianBille.iam-legend",
+      "unifiedjs.vscode-mdx"
+    ]
+  },
+  "folders": [
+    {
+      "path": "packages/aws-zod-interface-contracts",
+      "name": "📑 aws-zod-interface-contracts"
+    },
+    {
+      "path": "user-docs",
+      "name": "📖 Documentation"
+    },
+    {
+      "path": ".",
+      "name": "Root"
+    },
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "name": "@aws-zod-interface-contracts/root",
+  "description": "A set of tools to build and deploy type-safe Serverless microservices.",
+  "private": true,
+  "version": "1.0.0",
+  "author": "Sc0ra",
+  "license": "MIT",
+  "homepage": "https://www.swarmion.dev",
+  "bugs": "https://github.com/swarmion/aws-zod-interface-contracts/issues",
+  "repository": "swarmion/aws-zod-interface-contracts.git",
+  "keywords": [
+    "Contracts",
+    "Serverless",
+    "Typescript"
+  ],
+  "scripts": {
+    "bench": "nx run-many --target=bench --all --parallel=4",
+    "build": "nx run-many --target=build --all --parallel=4",
+    "deploy": "nx run-many --target=deploy --all --parallel=4",
+    "deploy-affected": "nx affected --target=deploy",
+    "format-check": "prettier --check .",
+    "format-fix": "prettier --write .",
+    "graph": "nx dep-graph",
+    "lint-fix": "pnpm linter-base-config --fix",
+    "lint-fix-all": "nx run-many --target=lint-fix-all --all --parallel=4",
+    "linter-base-config": "eslint --ext=js,ts",
+    "package": "nx run-many --target=package --all --parallel=4",
+    "postinstall": "husky install && syncpack format",
+    "release": "./release.sh",
+    "test": "pnpm run format-check && nx run-many --targets=test-circular,test-linter,test-type,test-unit --all --parallel=4",
+    "test-affected": "pnpm run format-check && nx affected --targets=test-circular,test-linter,test-type,test-unit",
+    "test-circular": "nx run-many --target=test-circular --all --parallel=4",
+    "test-linter": "nx run-many --target=test-linter --all --parallel=4",
+    "test-type": "nx run-many --target=test-type --all --parallel=4",
+    "test-unit": "nx run-many --target=test-unit --all --parallel=4",
+    "version": "pnpm install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
+    "@nx/workspace": "16.10.0",
+    "@typescript-eslint/eslint-plugin": "^5.57.1",
+    "@typescript-eslint/parser": "^5.57.1",
+    "changelogithub": "^0.13.0",
+    "eslint": "^8.29.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "husky": "^8.0.2",
+    "lerna": "^7.0.0",
+    "lint-staged": "^15.0.0",
+    "nx": "16.10.0",
+    "nx-cloud": "16.5.2",
+    "prettier": "^2.8.1",
+    "syncpack": "^11.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": "^18.16.1"
+  },
+  "packageManager": "pnpm@8.10.0"
+}
