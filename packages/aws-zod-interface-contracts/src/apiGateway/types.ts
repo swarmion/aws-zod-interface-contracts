@@ -1,7 +1,12 @@
 import { O } from 'ts-toolbelt';
 import { z } from 'zod';
 
-import { ConstrainedJsonZodSchema, JsonZodSchema } from 'types';
+import {
+  ConstrainedJsonZodSchema,
+  DefinedProperties,
+  JsonZodSchema,
+} from 'types';
+import { HttpMethod } from 'types/http';
 
 import { GenericApiGatewayContract } from './ApiGatewayContract';
 
@@ -44,3 +49,22 @@ export type OutputsType<Contract extends GenericApiGatewayContract> = {
 export type OutputType<Contract extends GenericApiGatewayContract> = O.UnionOf<
   OutputsType<Contract>
 >;
+
+/**
+ * Computed request parameters. This enables the call to the contract to be type-safe
+ */
+export interface RequestParameters<RequestBodyType> {
+  method: HttpMethod;
+  path: string;
+  body?: RequestBodyType;
+  headers?: Record<string, string>;
+  queryStringParameters?: Record<string, string>;
+}
+
+export type RequestArguments<Contract extends GenericApiGatewayContract> =
+  DefinedProperties<{
+    pathParameters: PathParametersType<Contract>;
+    queryStringParameters: QueryStringParametersType<Contract>;
+    headers: HeadersType<Contract>;
+    body: BodyType<Contract>;
+  }>;
