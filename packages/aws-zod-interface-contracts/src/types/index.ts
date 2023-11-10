@@ -1,3 +1,3 @@
 export * from './http';
-export * from './zodJsonSchema';
+export * from './jsonZodSchema';
 export * from './utils';

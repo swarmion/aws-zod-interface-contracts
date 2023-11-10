@@ -3,10 +3,10 @@ import omitBy from 'lodash/omitBy';
 import { z } from 'zod';
 
 import {
-  ConstrainedZodJsonSchema,
+  ConstrainedJsonZodSchema,
   HttpMethod,
   HttpStatusCodes,
-  ZodJsonSchema,
+  JsonZodSchema,
 } from 'types';
 
 import {
@@ -20,7 +20,7 @@ import {
  * a contract used to define a type-safe interaction between AWS Services through Api Gateway.
  *
  * Main features:
- * - input and output dynamic validation with JSONSchemas on both end of the contract;
+ * - input and output dynamic validation with zod on both end of the contract;
  * - type inference for both input and output;
  * - generation of a contract document that can be checked for breaking changes;
  * - generation of open api documentation
@@ -30,18 +30,17 @@ export class ApiGatewayContract<
   Method extends HttpMethod = HttpMethod,
   IntegrationType extends ApiGatewayIntegrationType = ApiGatewayIntegrationType,
   AuthorizerType extends ApiGatewayAuthorizerType = undefined,
-  PathParametersSchema extends ConstrainedZodJsonSchema | undefined = undefined,
-  QueryStringParametersSchema extends ConstrainedZodJsonSchema | undefined =
+  PathParametersSchema extends ConstrainedJsonZodSchema | undefined = undefined,
+  QueryStringParametersSchema extends ConstrainedJsonZodSchema | undefined =
     | undefined,
-  HeadersSchema extends ConstrainedZodJsonSchema | undefined = undefined,
-  RequestContextSchema extends ZodJsonSchema | undefined = undefined,
-  BodySchema extends ZodJsonSchema | undefined = undefined,
+  HeadersSchema extends ConstrainedJsonZodSchema | undefined = undefined,
+  RequestContextSchema extends JsonZodSchema | undefined = undefined,
+  BodySchema extends JsonZodSchema | undefined = undefined,
   PropsOutputSchemas extends
-    | Partial<Record<HttpStatusCodes, ZodJsonSchema>>
+    | Partial<Record<HttpStatusCodes, JsonZodSchema>>
     | undefined = undefined,
   OutputSchemas = Exclude<PropsOutputSchemas, undefined>,
 > {
-  public contractType = 'apiGateway' as const;
   public id: string;
   public path: Path;
   public method: Method;
@@ -53,7 +52,7 @@ export class ApiGatewayContract<
   public requestContextSchema: RequestContextSchema;
   public bodySchema: BodySchema;
   public outputSchemas: OutputSchemas;
-  public inputSchema: ZodJsonSchema;
+  public inputSchema: JsonZodSchema;
 
   /**
    * Builds a new ApiGateway contract
@@ -141,10 +140,9 @@ export class ApiGatewayContract<
       props.outputSchemas !== undefined ? props.outputSchemas : {}
     ) as OutputSchemas;
     this.inputSchema = this.getInputSchema();
-    // @ts-ignore remove this when zod-to-json-schema will be fixed
   }
 
-  private getInputSchema(): ZodJsonSchema {
+  private getInputSchema(): JsonZodSchema {
     const properties = omitBy(
       {
         pathParameters: this.pathParametersSchema,
@@ -154,7 +152,7 @@ export class ApiGatewayContract<
         body: this.bodySchema,
       } as const,
       isUndefined,
-    ) as Record<string, ZodJsonSchema>;
+    ) as Record<string, JsonZodSchema>;
 
     return z.object(properties);
   }
@@ -170,10 +168,10 @@ export type GenericApiGatewayContract = ApiGatewayContract<
   HttpMethod,
   ApiGatewayIntegrationType,
   ApiGatewayAuthorizerType,
-  ConstrainedZodJsonSchema | undefined,
-  ConstrainedZodJsonSchema | undefined,
-  ConstrainedZodJsonSchema | undefined,
-  ZodJsonSchema | undefined,
-  ZodJsonSchema | undefined,
-  Partial<Record<HttpStatusCodes, ZodJsonSchema>>
+  ConstrainedJsonZodSchema | undefined,
+  ConstrainedJsonZodSchema | undefined,
+  ConstrainedJsonZodSchema | undefined,
+  JsonZodSchema | undefined,
+  JsonZodSchema | undefined,
+  Partial<Record<HttpStatusCodes, JsonZodSchema>>
 >;
