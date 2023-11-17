@@ -1,0 +1,1 @@
+export { getContractDocumentation } from './openApiDocumentation';
