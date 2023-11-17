@@ -40,6 +40,7 @@
     "watch": "pnpm clean && concurrently 'pnpm:package-* --watch'"
   },
   "dependencies": {
+    "@anatine/zod-openapi": "^2.2.1",
     "@types/http-errors": "^2.0.1",
     "http-errors": "^2.0.0",
     "lodash": "^4.17.21",
