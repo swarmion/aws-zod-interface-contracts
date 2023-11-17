@@ -11,6 +11,6 @@ type Literal = z.infer<typeof literalSchema>;
 type Json = Literal | { [key: string]: Json } | Json[];
 export type JsonZodSchema = z.ZodType<Json>;
 
-const constrainedJsonZodSchema = z.record(z.union([z.string(), z.unknown()]));
-type Constrained = z.infer<typeof constrainedJsonZodSchema>;
-export type ConstrainedJsonZodSchema = z.ZodType<Constrained>;
+export type ConstrainedJsonZodSchema = z.ZodObject<{
+  [x: string]: z.ZodString | z.ZodOptional<z.ZodString>;
+}>;
