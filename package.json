@@ -14,7 +14,6 @@
     "Typescript"
   ],
   "scripts": {
-    "bench": "nx run-many --target=bench --all --parallel=4",
     "build": "nx run-many --target=build --all --parallel=4",
     "deploy": "nx run-many --target=deploy --all --parallel=4",
     "deploy-affected": "nx affected --target=deploy",
