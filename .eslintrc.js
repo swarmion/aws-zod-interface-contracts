@@ -187,11 +187,7 @@ module.exports = {
     },
     {
       files: ['**/src/**'],
-      excludedFiles: [
-        '**/__tests__/**',
-        '**/*.test.ts?(x)',
-        '**/__benches__/**',
-      ],
+      excludedFiles: ['**/__tests__/**', '**/*.test.ts?(x)'],
       rules: {
         'import/no-extraneous-dependencies': [
           'error',

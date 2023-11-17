@@ -1,0 +1,1 @@
+export { getFetchRequest } from './fetchRequest';

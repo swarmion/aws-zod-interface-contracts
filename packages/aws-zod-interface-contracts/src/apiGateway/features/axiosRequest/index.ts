@@ -1,0 +1,1 @@
+export { getAxiosRequest } from './axiosRequest';

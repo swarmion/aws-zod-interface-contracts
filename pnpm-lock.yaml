@@ -71,13 +71,13 @@ importers:
       http-errors:
         specifier: ^2.0.0
         version: 2.0.0
+      lodash:
+        specifier: ^4.17.21
+        version: 4.17.21
       ts-toolbelt:
         specifier: ^9.6.0
         version: 9.6.0
     devDependencies:
-      '@codspeed/tinybench-plugin':
-        specifier: ^2.2.0
-        version: 2.2.0(tinybench@2.5.0)
       '@types/aws-lambda':
         specifier: ^8.10.125
         version: 8.10.125
@@ -90,6 +90,9 @@ importers:
       '@vitest/coverage-c8':
         specifier: 0.30.0
         version: 0.30.0(vitest@0.31.1)
+      axios:
+        specifier: ^1.2.2
+        version: 1.3.3
       concurrently:
         specifier: ^8.0.0
         version: 8.0.0
@@ -105,9 +108,6 @@ importers:
       rimraf:
         specifier: ^5.0.0
         version: 5.0.0
-      tinybench:
-        specifier: ^2.3.1
-        version: 2.5.0
       ts-node:
         specifier: ^10.9.1
         version: 10.9.1(@types/node@18.16.1)(typescript@5.0.2)
@@ -1604,23 +1604,6 @@ packages:
 
   /@bcoe/v8-coverage@0.2.3:
     resolution: {integrity: sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==}
-    dev: true
-
-  /@codspeed/core@2.2.0:
-    resolution: {integrity: sha512-GSbTPA5Vt7rsrTenP/08zC55Ob2ag8AmqH9BfnoJqDv5RyHDv6tIHkJMLPuqatcKGFbuxbpE/FSYFE2xKkvqRQ==}
-    dependencies:
-      node-gyp-build: 4.6.0
-    dev: true
-
-  /@codspeed/tinybench-plugin@2.2.0(tinybench@2.5.0):
-    resolution: {integrity: sha512-yxOFhsJoICWqQ0e6I+S4CitA9gBDARHNYko04jyw9wnaCdFLc0uamVJI7p+BMmqa+1q3uvET3yUBHf6sEe/B1Q==}
-    peerDependencies:
-      tinybench: ^2.3.0
-    dependencies:
-      '@codspeed/core': 2.2.0
-      find-up: 6.3.0
-      stack-trace: 1.0.0-pre2
-      tinybench: 2.5.0
     dev: true
 
   /@colors/colors@1.5.0:
@@ -7452,14 +7435,6 @@ packages:
       locate-path: 6.0.0
       path-exists: 4.0.0
 
-  /find-up@6.3.0:
-    resolution: {integrity: sha512-v2ZsoEuVHYy8ZIlYqwPe/39Cy+cFDzp4dXPaxNvkEuouymu+2Jbz0PxpKarJHYJTmv2HWT3O382qY8l4jMWthw==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      locate-path: 7.1.1
-      path-exists: 5.0.0
-    dev: true
-
   /flat-cache@3.0.4:
     resolution: {integrity: sha512-dm9s5Pw7Jc0GvMYbshN6zchCA9RgQlzzEZX3vylR9IqFfS8XciblUXOKfW6SiuJ0e13eDYZoZV5wdrev7P3Nwg==}
     engines: {node: ^10.12.0 || >=12.0.0}
@@ -9257,13 +9232,6 @@ packages:
     dependencies:
       p-locate: 5.0.0
 
-  /locate-path@7.1.1:
-    resolution: {integrity: sha512-vJXaRMJgRVD3+cUZs3Mncj2mxpt5mP0EmNOsxRSZRMlbqjvxzDEOIUWXGmavo0ZC9+tNZCBLQ66reA11nbpHZg==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      p-locate: 6.0.0
-    dev: true
-
   /lodash.camelcase@4.3.0:
     resolution: {integrity: sha512-TwuEnCnxbc3rAvhf/LbG7tJUDzhqXyFnv3dtzLOPgCG/hODL7WFnsbwktkD7yUV0RrreP/l1PALq/YSg6VvjlA==}
     dev: true
@@ -10401,13 +10369,6 @@ packages:
     dependencies:
       p-limit: 3.1.0
 
-  /p-locate@6.0.0:
-    resolution: {integrity: sha512-wPrq66Llhl7/4AGC6I+cqxT07LhXvWL08LNXz1fENOw0Ap4sRZZ/gZpTTJ5jpurzzzfS2W/Ge9BY3LgLjCShcw==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      p-limit: 4.0.0
-    dev: true
-
   /p-map-series@2.1.0:
     resolution: {integrity: sha512-RpYIIK1zXSNEOdwxcfe7FdvGcs7+y5n8rifMhMNWvaxRNMPINJHF5GDeuVxWqnfrcHPSCnp7Oo5yNXHId9Av2Q==}
     engines: {node: '>=8'}
@@ -10592,11 +10553,6 @@ packages:
   /path-exists@4.0.0:
     resolution: {integrity: sha512-ak9Qy5Q7jYb2Wwcey5Fpvg2KoAc/ZIhLSLOSBmRmygPsGwkVVt0fZa0qrtMz+m6tJTAHfZQ8FnmB4MG4LWy7/w==}
     engines: {node: '>=8'}
-
-  /path-exists@5.0.0:
-    resolution: {integrity: sha512-RjhtfwJOxzcFmNOi6ltcbcu4Iu+FL3zEj83dk4kAS+fVpTxXLO1b38RvJgT/0QwvV/L3aY9TAnyv0EOqW4GoMQ==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dev: true
 
   /path-is-absolute@1.0.1:
     resolution: {integrity: sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==}
@@ -12387,11 +12343,6 @@ packages:
   /stable@0.1.8:
     resolution: {integrity: sha512-ji9qxRnOVfcuLDySj9qzhGSEFVobyt1kIOSkj1qZzYLzq7Tos/oUUWvotUPQLlrsidqsK6tBH89Bc9kL5zHA6w==}
     deprecated: 'Modern JS already guarantees Array#sort() is a stable sort, so this library is deprecated. See the compatibility table on MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#browser_compatibility'
-
-  /stack-trace@1.0.0-pre2:
-    resolution: {integrity: sha512-2ztBJRek8IVofG9DBJqdy2N5kulaacX30Nz7xmkYF6ale9WBVmIy6mFBchvGX7Vx/MyjBhx+Rcxqrj+dbOnQ6A==}
-    engines: {node: '>=16'}
-    dev: true
 
   /stackback@0.0.2:
     resolution: {integrity: sha512-1XMJE5fQo1jGH6Y/7ebnwPOBEkIEnT4QF32d5R1+VXdXveM0IBMJt8zfaxX1P3QhVwrYe+576+jkANtSS2mBbw==}
